@@ -149,7 +149,7 @@ const main = async () => {
     res.send({ user });
   });
 
-  app.get("/allLessons", async (req, res) => {
+  app.get("/allLessons", async (req: any, res: any) => {
     const token = req.headers.authorization?.split(" ")[1];
     if (!token) return res.status(401).send({});
 
@@ -162,7 +162,7 @@ const main = async () => {
     }
   });
 
-  app.get("/allLessons/:id", async (req, res) => {
+  app.get("/allLessons/:id", async (req: any, res: any) => {
     const token = req.headers.authorization?.split(" ")[1];
     if (!token) return res.status(401).send({ error: "Unauthorized" });
 
@@ -185,7 +185,7 @@ const main = async () => {
     }
   });
 
-  app.put("/lessons/:id", express.json(), async (req, res) => {
+  app.put("/lessons/:id", express.json(), async (req: any, res: any) => {
     const token = req.headers.authorization?.split(" ")[1];
     if (!token) return res.status(401).send({});
 
@@ -215,7 +215,7 @@ const main = async () => {
     }
   });
 
-  app.post("/lessons", express.json(), async (req, res) => {
+  app.post("/lessons", express.json(), async (req: any, res: any) => {
     const token = req.headers.authorization?.split(" ")[1];
     if (!token) return res.status(401).send({});
 
@@ -239,7 +239,7 @@ const main = async () => {
     }
   });
 
-  app.delete("/lessons/:id", async (req, res) => {
+  app.delete("/lessons/:id", async (req: any, res: any) => {
     const token = req.headers.authorization?.split(" ")[1];
     if (!token) return res.status(401).send({ error: "Unauthorized" });
 
