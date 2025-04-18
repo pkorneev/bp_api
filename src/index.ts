@@ -79,6 +79,7 @@ const main = async () => {
             }),
           });
         } catch (error) {
+          console.error("Error during OAuth2 callback processing:", error);
           cb(error);
         }
       }
