@@ -99,7 +99,7 @@ const main = async () => {
 
   app.get("/auth/react", (req, res, next) => {
     passport.authenticate("oauth2", {
-      callbackURL: "http://localhost:3003/auth/react/callback",
+      callbackURL: "https://bp-api-5f4f.onrender.com/auth/react/callback",
       state: "react",
       session: false,
     } as any)(req, res, next);
@@ -108,7 +108,7 @@ const main = async () => {
   app.get(
     "/auth/react/callback",
     passport.authenticate("oauth2", {
-      callbackURL: "http://localhost:3003/auth/react/callback",
+      callbackURL: "https://bp-api-5f4f.onrender.com/auth/react/callback",
       session: false,
       failureRedirect: "http://127.0.0.1:5173/auth-cancel",
     } as any),
