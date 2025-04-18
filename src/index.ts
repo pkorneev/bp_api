@@ -136,18 +136,18 @@ const main = async () => {
     } as any)(req, res, next);
   });
 
-  app.get("/auth/react/callback", async (req, res, next) => {
-    try {
-      passport.authenticate("oauth2", {
-        callbackURL: "https://bp-api-5f4f.onrender.com/auth/react/callback",
-        session: false,
-        failureRedirect: "http://127.0.0.1:5173/auth-cancel",
-      } as any)(req, res, next);
-    } catch (error) {
-      console.error("Error during OAuth2 callback:", error); // Log the error for debugging
-      res.status(500).send("Internal Server Error");
+  app.get(
+    "/auth/react/callback",
+    passport.authenticate("oauth2", {
+      callbackURL: "https://bp-api-5f4f.onrender.com/auth/react/callback",
+      session: false,
+      failureRedirect: "http://127.0.0.1:5173/auth-cancel",
+    } as any),
+    (req: any, res) => {
+      const redirectUrl = `http://127.0.0.1:5173/auth/${req.user.accessToken}`;
+      res.redirect(redirectUrl);
     }
-  });
+  );
 
   app.get("/me", async (req, res) => {
     const authHeader = req.headers.authorization;
