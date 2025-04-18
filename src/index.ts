@@ -102,7 +102,7 @@ const main = async () => {
       callbackURL: "http://localhost:3003/auth/react/callback",
       state: "react",
       session: false,
-    })(req, res, next);
+    } as any)(req, res, next);
   });
 
   app.get(
@@ -111,7 +111,7 @@ const main = async () => {
       callbackURL: "http://localhost:3003/auth/react/callback",
       session: false,
       failureRedirect: "http://127.0.0.1:5173/auth-cancel",
-    }),
+    } as any),
     (req: any, res) => {
       const redirectUrl = `http://127.0.0.1:5173/auth/${req.user.accessToken}`;
       res.redirect(redirectUrl);
