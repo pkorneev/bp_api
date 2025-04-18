@@ -49,7 +49,7 @@ const main = async () => {
         clientSecret: CLIENT_SECRET,
         callbackURL: CALLBACK_URL,
       },
-      async (accessToken, _refreshToken, profile, cb) => {
+      async (_accessToken, _refreshToken, profile, cb) => {
         try {
           const userInfo = {
             sub: profile.id,
@@ -58,7 +58,7 @@ const main = async () => {
           };
 
           let user = await User.findOne({
-            where: { universityId: userInfo.sub },
+            where: { googleId: userInfo.sub },
           });
 
           if (user) {
