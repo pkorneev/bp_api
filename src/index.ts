@@ -26,7 +26,7 @@ const main = async () => {
     },
     entities: [join(__dirname, "./entities/*.*")],
     logging: !__prod__,
-    synchronize: !__prod__,
+    synchronize: true,
   });
 
   await AppDataSource.initialize();
