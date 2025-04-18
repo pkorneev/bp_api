@@ -154,7 +154,7 @@ const main = async () => {
     if (!token) return res.status(401).send({});
 
     try {
-      const payload: any = jwt.verify(token, JWT_SECRET);
+      //const payload: any = jwt.verify(token, JWT_SECRET);
       const lessons = await AppDataSource.getRepository(Lesson).find();
       res.json(lessons);
     } catch (err) {
@@ -167,7 +167,7 @@ const main = async () => {
     if (!token) return res.status(401).send({ error: "Unauthorized" });
 
     try {
-      const payload: any = jwt.verify(token, JWT_SECRET);
+      //const payload: any = jwt.verify(token, JWT_SECRET);
 
       const lessonId = req.params.id;
       const lesson = await AppDataSource.getRepository(Lesson).findOne({
@@ -190,7 +190,7 @@ const main = async () => {
     if (!token) return res.status(401).send({});
 
     try {
-      const payload: any = jwt.verify(token, JWT_SECRET);
+      //const payload: any = jwt.verify(token, JWT_SECRET);
 
       const lessonRepo = AppDataSource.getRepository(Lesson);
       const lesson = await lessonRepo.findOne({
@@ -244,7 +244,7 @@ const main = async () => {
     if (!token) return res.status(401).send({ error: "Unauthorized" });
 
     try {
-      const payload: any = jwt.verify(token, JWT_SECRET);
+      //const payload: any = jwt.verify(token, JWT_SECRET);
 
       const lessonRepo = AppDataSource.getRepository(Lesson);
       const lessonId = parseInt(req.params.id);
