@@ -56,6 +56,8 @@ const main = async () => {
             name: profile.displayName,
             email: profile.emails?.[0]?.value,
           };
+          console.log("Full Profile:", profile);
+          console.log("Google Profile Info:", userInfo);
 
           let user = await User.findOne({
             where: { googleId: userInfo.sub },
