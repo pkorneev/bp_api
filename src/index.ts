@@ -21,6 +21,9 @@ const main = async () => {
   const AppDataSource = new DataSource({
     type: "postgres",
     url: process.env.DATABASE_URL,
+    ssl: {
+      rejectUnauthorized: false, // Required for Render's SSL
+    },
     entities: [join(__dirname, "./entities/*.*")],
     logging: !__prod__,
     synchronize: !__prod__,
