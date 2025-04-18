@@ -20,10 +20,7 @@ const JWT_SECRET = process.env.JWT_SECRET!;
 const main = async () => {
   const AppDataSource = new DataSource({
     type: "postgres",
-    host: "localhost",
-    database: "vsschool",
-    username: "postgres",
-    password: "postgress",
+    url: process.env.DATABASE_URL,
     entities: [join(__dirname, "./entities/*.*")],
     logging: !__prod__,
     synchronize: !__prod__,
