@@ -86,6 +86,34 @@ const main = async () => {
     )
   );
 
+  OAuth2Strategy.prototype.userProfile = function (
+    accessToken: string,
+    done: (err: Error | null, profile?: any) => void
+  ) {
+    if (!accessToken) {
+      return done(new Error("Missing access token"));
+    }
+
+    this._oauth2.get(`${AUTH_BASE_URL}/userinfo/`, accessToken, (err, body) => {
+      if (err) {
+        return done(new Error("Failed to fetch user profile"), null);
+      }
+
+      try {
+        const json = JSON.parse(body as string);
+        const profile = {
+          id: json.sub || json.id,
+          displayName: json.name,
+          emails: [{ value: json.email }],
+        };
+
+        done(null, profile);
+      } catch (e) {
+        done(e as Error);
+      }
+    });
+  };
+
   app.get("/auth/university", passport.authenticate("oauth2"));
 
   app.get(
