@@ -141,10 +141,10 @@ const main = async () => {
     passport.authenticate("oauth2", {
       callbackURL: "https://bp-api-5f4f.onrender.com/auth/react/callback",
       session: false,
-      failureRedirect: "http://127.0.0.1:5173/auth-cancel",
+      failureRedirect: "https://bp-dashboard-321g.onrender.com/auth-cancel",
     } as any),
     (req: any, res) => {
-      const redirectUrl = `http://127.0.0.1:5173/auth/${req.user.accessToken}`;
+      const redirectUrl = `https://bp-dashboard-321g.onrender.com/auth/${req.user.accessToken}`;
       res.redirect(redirectUrl);
     }
   );
